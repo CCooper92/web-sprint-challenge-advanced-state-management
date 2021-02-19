@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { connect } from 'react-redux';
+import { fetchSmurfs} from './actions/index'
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
@@ -14,7 +15,7 @@ class App extends Component {
         <Header />
 
         <main>
-          <SmurfList/>
+          <SmurfList smurfs={fetchSmurfs}/>
           <AddForm/>
         </main>
       </div>

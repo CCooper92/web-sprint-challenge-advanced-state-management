@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { addSmurf } from './../actions/index';
 
 const AddForm = (props) => {
     const [state, setState] = useState({
@@ -7,6 +8,7 @@ const AddForm = (props) => {
         nickname:"",
         description:""
     });
+    
 
     const handleChange = e => {
         setState({
@@ -17,9 +19,11 @@ const AddForm = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        addSmurf(props.name, props.position, props.nickname, props.summary)
         if (state.name === "" || state.position === "" || state.nickname === "") {
             errorMessage = "Name, position and nickname fields are required.";
         }
+        
     }
 
     const errorMessage = "";
@@ -46,7 +50,7 @@ const AddForm = (props) => {
             {
                 errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {errorMessage}</div>
             }
-            <button>Submit Smurf</button>
+            <button onclick={handleSubmit}>Submit Smurf</button>
         </form>
     </section>);
 }
