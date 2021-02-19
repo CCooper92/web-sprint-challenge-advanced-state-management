@@ -8,11 +8,11 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import  reducer  from './reducers/index';
 
-const store = createStore(reducer, applyMiddleware(thunk, logger));
- 
+
 const { worker } = require('./mocks/browser');
 worker.start();
 
+const store = createStore(reducer, applyMiddleware(thunk));
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
